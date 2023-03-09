@@ -1,13 +1,13 @@
-export interface IApiResponse<T> {
+export type ApiResponse<T> = {
     data: T;
     err: number;
-}
+};
 
-export interface IRpcCallOption {
+export type RpcCallOption = {
     route: string;
     body?: { [key: string]: any; };
     header?: { [key: string]: string; };
-}
+};
 
 export abstract class RpcBase {
     public static ctor = 'RpcBase';
@@ -26,7 +26,7 @@ export abstract class RpcBase {
      *  // res is T, 如果resp.err!=0则会抛错
      * ```
      */
-    public async call<T>(v: IRpcCallOption) {
+    public async call<T>(v: RpcCallOption) {
         const resp = await this.callWithoutThrow<T>(v);
         if (resp.err)
             throw RpcBase.buildErrorFunc(resp.err, resp.data);
@@ -43,8 +43,8 @@ export abstract class RpcBase {
      *      body:{},
      *      header:{}
      *  );
-     *  // resp is IApiResponse<T>
+     *  // resp is ApiResponse<T>
      * ```
      */
-    public abstract callWithoutThrow<T>(v: IRpcCallOption): Promise<IApiResponse<T>>;
+    public abstract callWithoutThrow<T>(v: RpcCallOption): Promise<ApiResponse<T>>;
 }
