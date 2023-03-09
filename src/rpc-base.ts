@@ -1,5 +1,13 @@
-import { IApiResponse } from './i-api-response';
-import { IRpcCallOption } from './i-rpc-call-option';
+export interface IApiResponse<T> {
+    data: T;
+    err: number;
+}
+
+export interface IRpcCallOption {
+    route: string;
+    body?: { [key: string]: any; };
+    header?: { [key: string]: string; };
+}
 
 export abstract class RpcBase {
     public static ctor = 'RpcBase';
@@ -35,7 +43,7 @@ export abstract class RpcBase {
      *      body:{},
      *      header:{}
      *  );
-     *  // resp is IApiDyanmicResponse<T>
+     *  // resp is IApiResponse<T>
      * ```
      */
     public abstract callWithoutThrow<T>(v: IRpcCallOption): Promise<IApiResponse<T>>;
