@@ -1,13 +1,5 @@
-export type ApiResponse<T> = {
-    data: T;
-    err: number;
-};
-
-export type RpcCallOption = {
-    route: string;
-    body?: { [key: string]: any; };
-    header?: { [key: string]: string; };
-};
+import { ApiResponse } from './api-response';
+import { RpcCallOption } from './call-option';
 
 export abstract class RpcBase {
     public static ctor = 'RpcBase';
