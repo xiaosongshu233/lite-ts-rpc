@@ -4,6 +4,7 @@ type ApiResponse<T> = {
 };
 type RpcCallOption = {
     route: string;
+    areaNo?: number;
     body?: {
         [key: string]: any;
     };
@@ -37,4 +38,4 @@ declare class MockRpc extends RpcBase {
     constructor(m_Rpc: RpcBase);
     callWithoutThrow(v: RpcCallOption): Promise<ApiResponse<any>>;
 }
-{ ApiResponse, RpcBase, RpcCallOption, Header, HttpMethod, MockRpc };
+{ ApiResponse, RpcBase, RpcCallOption, Header, HttpMethod, MockRpc };
