@@ -3,6 +3,10 @@
   "bugs": {
     "url": "https://github.com/ahl5esoft/lite-ts-rpc/issues"
   },
+  "dependencies": {
+    "lite-ts-enum": "^1.6.0",
+    "lite-ts-error": "^1.0.0"
+  },
   "description": "远程过程调用库",
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
@@ -36,5 +40,5 @@
     "release": "npm run build && npm publish && npm config delete https-proxy && npm config set registry=https://registry.npm.taobao.org",
     "test": "mocha -t 30s -r ./node_modules/ts-node/register/index.js --exit"
   },
-  "version": "1.4.0"
+  "version": "1.5.0"
 }
