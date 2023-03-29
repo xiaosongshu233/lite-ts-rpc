@@ -3,7 +3,7 @@ import { CustomError, ErrorCode } from 'lite-ts-error';
 
 import { RpcBase } from './rpc-base';
 
-class AreaData extends EnumItem {
+export class AreaData extends EnumItem {
     public loadBalance: { [app: string]: string };
 }
 
