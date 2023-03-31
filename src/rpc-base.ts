@@ -2,22 +2,11 @@ import { ApiResponse } from './api-response';
 import { RpcCallOption } from './call-option';
 
 export abstract class RpcBase {
+    public static body: { [key: string]: any } = {};
     public static ctor = 'RpcBase';
-
+    public static header: { [key: string]: string } = {};
     public static buildErrorFunc: (errorCode: number, data: any) => Error;
 
-    /**
-     * @example
-     * ```typescript
-     *  const rpc: RpcBase;
-     *  const resp = await rpc.call<T>({
-     *      route: '/服务名/端/api'，
-     *      body:{},
-     *      header:{}
-     *  });
-     *  // res is T, 如果resp.err!=0则会抛错
-     * ```
-     */
     public async call<T>(v: RpcCallOption) {
         const resp = await this.callWithoutThrow<T>(v);
         if (resp.err)
@@ -26,17 +15,5 @@ export abstract class RpcBase {
         return resp.data;
     }
 
-    /**
-     * @example
-     * ```typescript
-     *  const rpc: RpcBase;
-     *  const resp = await rpc.callWithoutThrow<T>({
-     *      route: '/服务名/端/api'，
-     *      body:{},
-     *      header:{}
-     *  );
-     *  // resp is ApiResponse<T>
-     * ```
-     */
     public abstract callWithoutThrow<T>(v: RpcCallOption): Promise<ApiResponse<T>>;
 }
