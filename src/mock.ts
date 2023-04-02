@@ -5,7 +5,7 @@ import { RpcBase } from './rpc-base';
 export class MockRpc extends RpcBase {
     public static stub: {
         [route: string]: {
-            data: ApiResponse<any>;
+            response: ApiResponse<any>;
             predicate: (v: RpcCallOption) => boolean;
         }[]
     };
@@ -16,13 +16,13 @@ export class MockRpc extends RpcBase {
         super();
     }
 
-    public async callWithoutThrow(v: RpcCallOption) {
+    protected async onCall(v: RpcCallOption) {
         const res = (MockRpc.stub[v.route] ?? []).find(r => {
             return r.predicate(v);
         });
         if (res)
-            return res.data
+            return res.response;
 
-        return this.m_Rpc.callWithoutThrow(v);
+        return this.m_Rpc.call(v);
     }
 }

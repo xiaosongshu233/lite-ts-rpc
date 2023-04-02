@@ -82,9 +82,10 @@ export class LoadRpcServerEnumHandler extends LoadEnumHandlerBase {
     private async getAllEnumItem(rpc: RpcBase, app: string, reqBody: any) {
         const res = await rpc.call<EnumItem[]>({
             body: reqBody,
+            isThrow: true,
             route: `/${app}/find-enum-items`
         });
-        return res.reduce((memo, r) => {
+        return res.data.reduce((memo, r) => {
             memo[r.value] = r;
             return memo;
         }, {});

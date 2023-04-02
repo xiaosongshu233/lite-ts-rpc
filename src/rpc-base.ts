@@ -1,19 +1,19 @@
+import { CustomError } from 'lite-ts-error';
 import { ApiResponse } from './api-response';
 import { RpcCallOption } from './call-option';
 
 export abstract class RpcBase {
-    public static body: { [key: string]: any } = {};
     public static ctor = 'RpcBase';
     public static header: { [key: string]: string } = {};
-    public static buildErrorFunc: (errorCode: number, data: any) => Error;
+    public static body: { [key: string]: any } = {};
 
     public async call<T>(v: RpcCallOption) {
-        const resp = await this.callWithoutThrow<T>(v);
-        if (resp.err)
-            throw RpcBase.buildErrorFunc(resp.err, resp.data);
+        const resp = await this.onCall<T>(v);
+        if (resp.err && v.isThrow)
+            throw new CustomError(resp.err, resp.data);
 
-        return resp.data;
+        return resp;
     }
 
-    public abstract callWithoutThrow<T>(v: RpcCallOption): Promise<ApiResponse<T>>;
+    protected abstract onCall<T>(v: RpcCallOption): Promise<ApiResponse<T>>;
 }

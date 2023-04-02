@@ -26,9 +26,10 @@ export class LoadRpcClientEnumHandler extends LoadEnumHandlerBase {
                 areaNo: opt.areaNo,
                 name: opt.enum.name,
             },
-            route: `/${this.m_EnumNameApp[opt.enum.name] ?? this.m_DefaultApp}/find-enum-items`
+            isThrow: true,
+            route: `/${this.m_EnumNameApp[opt.enum.name] ?? this.m_DefaultApp}/find-enum-items`,
         });
-        opt.res = res.reduce((memo, r) => {
+        opt.res = res.data.reduce((memo, r) => {
             memo[r.value] = r;
             return memo;
         }, {});

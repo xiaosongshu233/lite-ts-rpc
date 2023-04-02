@@ -92,11 +92,14 @@ describe('src/load-server-enum-handler.ts', () => {
             mockRpc.expectReturn(
                 r => r.call({
                     body: {},
+                    isThrow: true,
                     route: '/_app/find-enum-items'
                 }),
-                [{
-                    value: 1
-                }]
+                {
+                    data: [{
+                        value: 1
+                    }]
+                }
             );
 
             const fn = Reflect.get(self, 'getAllEnumItem').bind(self) as (_: RpcBase, __: string, ___: any) => Promise<void>;

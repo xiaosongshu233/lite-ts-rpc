@@ -17,11 +17,14 @@ describe('src/load-client-enum-handler.ts', () => {
                         areaNo: 11,
                         name: 'test'
                     },
+                    isThrow: true,
                     route: '/d-app/find-enum-items'
                 }),
-                [{
-                    value: 1
-                }]
+                {
+                    data: [{
+                        value: 1
+                    }]
+                }
             );
 
             const mockEnum = new Mock<Enum<EnumItem>>({
@@ -52,11 +55,14 @@ describe('src/load-client-enum-handler.ts', () => {
                         areaNo: 11,
                         name: 'test'
                     },
+                    isThrow: true,
                     route: '/o-app/find-enum-items'
                 }),
-                [{
-                    value: 1
-                }]
+                {
+                    data: [{
+                        value: 1
+                    }]
+                }
             );
 
             const mockEnum = new Mock<Enum<EnumItem>>({
