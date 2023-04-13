@@ -1,5 +1,5 @@
 import { deepStrictEqual, strictEqual } from 'assert';
-import { Enum, EnumItem, LoadEnumHandleOption, LoadEnumHandlerBase } from 'lite-ts-enum';
+import { Enum, EnumItem, LoadEnumHandlerContext, LoadEnumHandlerBase } from 'lite-ts-enum';
 import { Mock } from 'lite-ts-mock';
 
 import { LoadRpcServerEnumHandler as Self } from './load-server-enum-handler';
@@ -22,7 +22,7 @@ describe('src/load-server-enum-handler.ts', () => {
             const mockEnum = new Mock<Enum<EnumItem>>({
                 name: 'AreaData'
             });
-            const ctx: LoadEnumHandleOption = {
+            const ctx: LoadEnumHandlerContext = {
                 enum: mockEnum.actual,
                 res: null
             };
@@ -40,7 +40,7 @@ describe('src/load-server-enum-handler.ts', () => {
             const mockEnum = new Mock<Enum<EnumItem>>({
                 name: 'tstt'
             });
-            const ctx: LoadEnumHandleOption = {
+            const ctx: LoadEnumHandlerContext = {
                 enum: mockEnum.actual,
                 res: null
             };
@@ -74,7 +74,7 @@ describe('src/load-server-enum-handler.ts', () => {
             const mockEnum = new Mock<Enum<EnumItem>>({
                 name: 'test'
             });
-            const ctx: LoadEnumHandleOption = {
+            const ctx: LoadEnumHandlerContext = {
                 areaNo: 1,
                 enum: mockEnum.actual,
                 res: null

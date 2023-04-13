@@ -1,4 +1,4 @@
-import { EnumItem, LoadEnumHandleOption, LoadEnumHandlerBase } from 'lite-ts-enum';
+import { EnumItem, LoadEnumHandlerContext, LoadEnumHandlerBase } from 'lite-ts-enum';
 
 import { RpcBase } from './rpc-base';
 
@@ -20,7 +20,7 @@ export class LoadRpcClientEnumHandler extends LoadEnumHandlerBase {
         }, {});
     }
 
-    public async handle(opt: LoadEnumHandleOption) {
+    public async handle(opt: LoadEnumHandlerContext) {
         const res = await this.m_Rpc.call<EnumItem[]>({
             body: {
                 areaNo: opt.areaNo,
