@@ -4,8 +4,8 @@
     "url": "https://github.com/ahl5esoft/lite-ts-rpc/issues"
   },
   "dependencies": {
-    "lite-ts-enum": "^1.6.0",
-    "lite-ts-error": "^1.0.0"
+    "lite-ts-enum": "^1.8.1",
+    "lite-ts-error": "^1.1.0"
   },
   "description": "远程过程调用库",
   "devDependencies": {

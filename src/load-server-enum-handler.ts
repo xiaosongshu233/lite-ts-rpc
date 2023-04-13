@@ -1,4 +1,4 @@
-import { EnumItem, LoadEnumHandleOption, LoadEnumHandlerBase } from 'lite-ts-enum';
+import { EnumItem, LoadEnumHandlerContext, LoadEnumHandlerBase } from 'lite-ts-enum';
 import { CustomError, ErrorCode } from 'lite-ts-error';
 
 import { RpcBase } from './rpc-base';
@@ -47,7 +47,7 @@ export class LoadRpcServerEnumHandler extends LoadEnumHandlerBase {
         }, {});
     }
 
-    public async handle(opt: LoadEnumHandleOption) {
+    public async handle(opt: LoadEnumHandlerContext) {
         opt.areaNo ??= 0;
 
         if (opt.enum.name == AreaData.name) {
