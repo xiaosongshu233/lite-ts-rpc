@@ -1,7 +1,7 @@
 import { EnumItem, LoadEnumHandlerContext, LoadEnumHandlerBase } from 'lite-ts-enum';
 import { CustomError, ErrorCode } from 'lite-ts-error';
 
-import { RpcBase } from './rpc-base';
+import { RpcBase } from './base';
 
 export class AreaData extends EnumItem {
     public loadBalance: { [app: string]: string };

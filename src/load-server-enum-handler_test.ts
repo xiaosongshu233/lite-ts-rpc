@@ -3,7 +3,7 @@ import { Enum, EnumItem, LoadEnumHandlerContext, LoadEnumHandlerBase } from 'lit
 import { Mock } from 'lite-ts-mock';
 
 import { LoadRpcServerEnumHandler as Self } from './load-server-enum-handler';
-import { RpcBase } from './rpc-base';
+import { RpcBase } from './base';
 
 describe('src/load-server-enum-handler.ts', () => {
     describe('.handle(opt: LoadEnumHandleOption)', () => {

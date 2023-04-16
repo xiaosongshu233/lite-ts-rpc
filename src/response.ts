@@ -1,4 +1,4 @@
-export type ApiResponse<T> = {
+export type RpcResponse<T> = {
     data: T;
     err: number;
 };

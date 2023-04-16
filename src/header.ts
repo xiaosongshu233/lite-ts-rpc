@@ -1,4 +1,4 @@
-export enum Header {
+export enum RpcHeader {
     /**
      * 认证数据
      */

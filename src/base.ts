@@ -1,6 +1,7 @@
 import { CustomError } from 'lite-ts-error';
-import { ApiResponse } from './api-response';
+
 import { RpcCallOption } from './call-option';
+import { RpcResponse } from './response';
 
 export abstract class RpcBase {
     public static ctor = 'RpcBase';
@@ -15,5 +16,5 @@ export abstract class RpcBase {
         return resp;
     }
 
-    protected abstract onCall<T>(v: RpcCallOption): Promise<ApiResponse<T>>;
+    protected abstract onCall<T>(v: RpcCallOption): Promise<RpcResponse<T>>;
 }

@@ -1,11 +1,11 @@
-import { ApiResponse } from './api-response';
+import { RpcBase } from './base';
 import { RpcCallOption } from './call-option';
-import { RpcBase } from './rpc-base';
+import { RpcResponse } from './response';
 
 export class MockRpc extends RpcBase {
     public static stub: {
         [route: string]: {
-            response: ApiResponse<any>;
+            response: RpcResponse<any>;
             predicate: (v: RpcCallOption) => boolean;
         }[]
     };

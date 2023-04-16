@@ -1,6 +1,6 @@
 import { EnumItem, LoadEnumHandlerContext, LoadEnumHandlerBase } from 'lite-ts-enum';
 
-import { RpcBase } from './rpc-base';
+import { RpcBase } from './base';
 
 export class LoadRpcClientEnumHandler extends LoadEnumHandlerBase {
     private m_EnumNameApp: { [enumName: string]: string };
