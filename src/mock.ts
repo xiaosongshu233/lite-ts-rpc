@@ -8,7 +8,7 @@ export class MockRpc extends RpcBase {
             response: RpcResponse<any>;
             predicate: (v: RpcCallOption) => boolean;
         }[]
-    };
+    } = {};
 
     public constructor(
         private m_Rpc: RpcBase,
