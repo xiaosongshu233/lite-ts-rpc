@@ -21,13 +21,14 @@ export class LoadRpcClientEnumHandler extends LoadEnumHandlerBase {
     }
 
     public async handle(opt: LoadEnumHandlerContext) {
+        const [app, enumName] = opt.enum.name.includes('.') ? opt.enum.name.split('.') : [ this.m_EnumNameApp[opt.enum.name] ?? this.m_DefaultApp, opt.enum.name];
         const res = await this.m_Rpc.call<EnumItem[]>({
             body: {
                 areaNo: opt.areaNo,
-                name: opt.enum.name,
+                name: enumName,
             },
             isThrow: true,
-            route: `/${this.m_EnumNameApp[opt.enum.name] ?? this.m_DefaultApp}/find-enum-items`,
+            route: `/${app}/find-enum-items`,
         });
         opt.res = res.data.reduce((memo, r) => {
             memo[r.value] = r;
