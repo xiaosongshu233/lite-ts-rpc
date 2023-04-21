@@ -16,13 +16,13 @@ export class MockRpc extends RpcBase {
         super();
     }
 
-    protected async onCall(v: RpcCallOption) {
+    protected async onCall<T>(v: RpcCallOption) {
         const res = (MockRpc.stub[v.route] ?? []).find(r => {
             return r.predicate(v);
         });
         if (res)
             return res.response;
 
-        return this.m_Rpc.call(v);
+        return await this.m_Rpc.call<T>(v);
     }
 }
