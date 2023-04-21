@@ -5,7 +5,7 @@ import { RpcBase } from './base';
 export class RpcEnumLoadHandler extends EnumLoadHandlerBase {
     public constructor(
         private m_Rpc: RpcBase,
-        private m_BuildItemFunc = (r: EnumItem) => r,
+        private m_BuildItemFunc: (entry: EnumItem, enumName: string) => EnumItem = entry => entry,
     ) {
         super();
     }
@@ -20,7 +20,7 @@ export class RpcEnumLoadHandler extends EnumLoadHandlerBase {
             route: `/${ctx.app}/find-enum-items`,
         });
         ctx.res = res.data.reduce((memo, r) => {
-            memo[r.value] = this.m_BuildItemFunc(r);
+            memo[r.value] = this.m_BuildItemFunc(r, ctx.enum.name);
             return memo;
         }, {});
     }

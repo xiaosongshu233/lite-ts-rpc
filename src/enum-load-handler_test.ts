@@ -8,7 +8,7 @@ import { RpcBase } from './base';
 class TestEnumItem extends EnumItem {
     public enumName: string;
 
-    public static create(enumName: string, entry: EnumItem) {
+    public static create(entry: EnumItem, enumName: string) {
         const item = new TestEnumItem();
         Object.assign(item, entry);
         item.enumName = enumName;
@@ -20,8 +20,8 @@ describe('src/enum-load-handler.ts', () => {
     describe('.handle(ctx: EnumLoadHandlerContext)', () => {
         it('ok', async () => {
             const mockRpc = new Mock<RpcBase>();
-            const self = new Self(mockRpc.actual, r => {
-                return TestEnumItem.create('test-enum', r);
+            const self = new Self(mockRpc.actual, (entry, enumName) => {
+                return TestEnumItem.create(entry, enumName);
             });
 
             mockRpc.expectReturn(
